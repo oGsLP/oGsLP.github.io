@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="oGsLP">
 <meta property="og:description" content="&amp;emsp;刚把jee的大作业写完，其中前端用到了Vue框架，在官方文档和很多教程里都使用了许多箭头函数等es6特性，加之昨天面试字节跳动前端实习的时候问道js的第一句话就是“你了解es2015”吗。写项目的时候模仿去写但是好像上下文this和普通的函数不太一样，后来查文档学习了一下，但还是没有全部理解，现在准备系统地学习一下es6的特性，那么就先从箭头函数开始吧">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-24T03:50:12.734Z">
+<meta property="og:updated_time" content="2019-03-24T06:44:42.056Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6--箭头函数">
 <meta name="twitter:description" content="&amp;emsp;刚把jee的大作业写完，其中前端用到了Vue框架，在官方文档和很多教程里都使用了许多箭头函数等es6特性，加之昨天面试字节跳动前端实习的时候问道js的第一句话就是“你了解es2015”吗。写项目的时候模仿去写但是好像上下文this和普通的函数不太一样，后来查文档学习了一下，但还是没有全部理解，现在准备系统地学习一下es6的特性，那么就先从箭头函数开始吧">
@@ -158,7 +158,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1691 个字)
+                    11 分钟 读完 (大约 1700 个字)
                 </span>
                 
                 
@@ -175,10 +175,10 @@
 <p>&emsp;刚把jee的大作业写完，其中前端用到了Vue框架，在官方文档和很多教程里都使用了许多箭头函数等es6特性，加之昨天面试字节跳动前端实习的时候问道js的第一句话就是“你了解es2015”吗。写项目的时候模仿去写但是好像上下文this和普通的函数不太一样，后来查文档学习了一下，但还是没有全部理解，现在准备系统地学习一下es6的特性，那么就先从箭头函数开始吧</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(aruguments) =&gt; &#123;statements&#125;</span><br><span class="line">x =&gt; x+2 // 单参省略括号，单语句且为返回值省略大括号</span><br><span class="line">()=&gt;&#123;&#125;   // 无参保留()</span><br><span class="line"></span><br><span class="line">*********************************************</span><br><span class="line"></span><br><span class="line">//加括号的函数体返回对象字面表达式：</span><br><span class="line">参数=&gt; (&#123;foo: bar&#125;)</span><br><span class="line"></span><br><span class="line">//支持剩余参数和默认参数</span><br><span class="line">(参数1, 参数2, ...rest) =&gt; &#123;函数声明&#125;</span><br><span class="line">(参数1 = 默认值1,参数2, …, 参数N = 默认值N) =&gt; &#123;函数声明&#125;</span><br><span class="line"></span><br><span class="line">//同样支持参数列表解构</span><br><span class="line">let f = ([a, b] = [1, 2], &#123;x: c&#125; = &#123;x: a + b&#125;) =&gt; a + b + c;</span><br><span class="line">f();  // 6</span><br></pre></td></tr></table></figure>
-<p>官网对与箭头函数的描述有两个特点，一个是更简短，另一个则是不绑定this，举例来说明<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Test()&#123;</span><br><span class="line">    this.val = 0;</span><br><span class="line">    setInterval(function test()&#123;</span><br><span class="line">        this.val++;</span><br><span class="line">    &#125;,1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;因为setInterval中的function的this上下文是全局对象，所以test里的this.val和对象的val不一样，一般采用bind(this)或者self/that=this,在setInterval中调用that来获得对象上下文，而箭头函数则是不绑定this，具体原因是因为箭头函数没有prototype，它只会从自己的作用域链的上一层继承this上下文，如下<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Test()&#123;</span><br><span class="line">    this.val = 0;</span><br><span class="line">    setInterval(()=&gt;&#123;</span><br><span class="line">        this.val++;</span><br><span class="line">    &#125;,1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;如果拿我自己的大作业的例子来说就是在尝试promise、then的时候发现this上下文的问题，一开始用bind来解决，后来接触箭头函数，就直接用箭头函数改写了方法，但是当时不知道箭头函数的this直接继承，后来发现，觉得真的很方便，简化了繁琐的bind，直接上实际例子。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">//改造前</span><br><span class="line">pay_deal()&#123; </span><br><span class="line">    new Promise(function (resolve) &#123;</span><br><span class="line">        // 略</span><br><span class="line">        resolve(val_1);</span><br><span class="line">        &#125;.bind(this))</span><br><span class="line">    .then(function (val_1)&#123;</span><br><span class="line">        return new Promise(function (resolve) &#123;</span><br><span class="line">             // 略</span><br><span class="line">             resolve(val_2);</span><br><span class="line">             &#125;.bind(this));</span><br><span class="line">        &#125;.bind(this))</span><br><span class="line">    .then(function (val_2) &#123;</span><br><span class="line">        // 略</span><br><span class="line">    &#125;.bind(this));</span><br><span class="line">&#125;,</span><br><span class="line">//改造后</span><br><span class="line">pay_deal()&#123;</span><br><span class="line">    new Promise(resolve =&gt; &#123;</span><br><span class="line">        // 略</span><br><span class="line">        resolve(val_1)</span><br><span class="line">    &#125;);</span><br><span class="line">    &#125;).then(val_1=&gt;new Promise(resolve =&gt;  &#123;</span><br><span class="line">        // 略</span><br><span class="line">        resolve(val_2)</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;)).then(val_2=&gt;&#123;</span><br><span class="line">        // 略</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(aruguments) =&gt; &#123;statements&#125;</span><br><span class="line">x =&gt; x+<span class="hljs-number">2</span> <span class="hljs-comment">// 单参省略括号，单语句且为返回值省略大括号</span></span><br><span class="line">()=&gt;&#123;&#125;   <span class="hljs-comment">// 无参保留()</span></span><br><span class="line"></span><br><span class="line">*********************************************</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//加括号的函数体返回对象字面表达式：</span></span><br><span class="line">参数=&gt; (&#123;<span class="hljs-attr">foo</span>: bar&#125;)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//支持剩余参数和默认参数</span></span><br><span class="line">(参数<span class="hljs-number">1</span>, 参数<span class="hljs-number">2</span>, ...rest) =&gt; &#123;函数声明&#125;</span><br><span class="line">(参数<span class="hljs-number">1</span> = 默认值<span class="hljs-number">1</span>,参数<span class="hljs-number">2</span>, …, 参数N = 默认值N) =&gt; &#123;函数声明&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//同样支持参数列表解构</span></span><br><span class="line"><span class="hljs-keyword">let</span> f = <span class="hljs-function">(<span class="hljs-params">[a, b] = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], &#123;x: c&#125; = &#123;x: a + b&#125;</span>) =&gt;</span> a + b + c;</span><br><span class="line">f();  <span class="hljs-comment">// 6</span></span><br></pre></td></tr></table></figure>
+<p>官网对与箭头函数的描述有两个特点，一个是更简短，另一个则是不绑定this，举例来说明<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Test</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.val = <span class="hljs-number">0</span>;</span><br><span class="line">    setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.val++;</span><br><span class="line">    &#125;,<span class="hljs-number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;因为setInterval中的function的this上下文是全局对象，所以test里的this.val和对象的val不一样，一般采用bind(this)或者self/that=this,在setInterval中调用that来获得对象上下文，而箭头函数则是不绑定this，具体原因是因为箭头函数没有prototype，它只会从自己的作用域链的上一层继承this上下文，如下<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Test</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.val = <span class="hljs-number">0</span>;</span><br><span class="line">    setInterval(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.val++;</span><br><span class="line">    &#125;,<span class="hljs-number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;如果拿我自己的大作业的例子来说就是在尝试promise、then的时候发现this上下文的问题，一开始用bind来解决，后来接触箭头函数，就直接用箭头函数改写了方法，但是当时不知道箭头函数的this直接继承，后来发现，觉得真的很方便，简化了繁琐的bind，直接上实际例子。<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//改造前</span></span><br><span class="line">pay_deal()&#123; </span><br><span class="line">    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// 略</span></span><br><span class="line">        resolve(val_1);</span><br><span class="line">        &#125;.bind(<span class="hljs-keyword">this</span>))</span><br><span class="line">    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val_1</span>)</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>&#123;</span><br><span class="line">             <span class="hljs-comment">// 略</span></span><br><span class="line">             resolve(val_2);</span><br><span class="line">             &#125;.bind(<span class="hljs-keyword">this</span>));</span><br><span class="line">        &#125;.bind(<span class="hljs-keyword">this</span>))</span><br><span class="line">    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">val_2</span>) </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// 略</span></span><br><span class="line">    &#125;.bind(<span class="hljs-keyword">this</span>));</span><br><span class="line">&#125;,</span><br><span class="line"><span class="hljs-comment">//改造后</span></span><br><span class="line">pay_deal()&#123;</span><br><span class="line">    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="hljs-comment">// 略</span></span><br><span class="line">        resolve(val_1)</span><br><span class="line">    &#125;);</span><br><span class="line">    &#125;).then(<span class="hljs-function"><span class="hljs-params">val_1</span>=&gt;</span><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span>  &#123;</span><br><span class="line">        <span class="hljs-comment">// 略</span></span><br><span class="line">        resolve(val_2)</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;)).then(<span class="hljs-function"><span class="hljs-params">val_2</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="hljs-comment">// 略</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
 <p>&emsp;效果很明显，省去了繁琐的this绑定，特别在promise的then连写的时候，return new promise需要两次绑定，简直就是灾难，用箭头函数瞬间清爽了很多。</p>
 <ul>
 <li>FAQ &emsp; 若是箭头函数的外层没有普通函数呢？</li>
@@ -188,9 +188,9 @@
 <hr>
 <pre><code>以上是箭头函数基本的两个概念，也是最简单的应用，还有很多实际的复杂情况和别的技术混合使用的例子
 </code></pre><h3 id="apply-call调用"><a href="#apply-call调用" class="headerlink" title="apply/call调用"></a>apply/call调用</h3><p>&emsp;由于箭头函数没有自己的this，通过apply或者call调用的时候只能传递参数，而第一个参数–上下文将被忽略，同样，箭头函数调用bind也是徒劳之举，webstorm会直接提醒错误</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var adder = &#123;</span><br><span class="line">  base : 1,</span><br><span class="line">    </span><br><span class="line">  add : function(a) &#123;</span><br><span class="line">    var f = v =&gt; v + this.base;</span><br><span class="line">    return f(a);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  addThruCall: function(a) &#123;</span><br><span class="line">    var f = v =&gt; v + this.base;</span><br><span class="line">    var b = &#123;</span><br><span class="line">      base : 2</span><br><span class="line">    &#125;;</span><br><span class="line">            </span><br><span class="line">    return f.call(b, a);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.log(adder.add(1));         // 输出 2</span><br><span class="line">console.log(adder.addThruCall(1)); // 仍然输出 2（而不是3 ——译者注）</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> adder = &#123;</span><br><span class="line">  base : <span class="hljs-number">1</span>,</span><br><span class="line">    </span><br><span class="line">  add : <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> f = <span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> v + <span class="hljs-keyword">this</span>.base;</span><br><span class="line">    <span class="hljs-keyword">return</span> f(a);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  addThruCall: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">a</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> f = <span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> v + <span class="hljs-keyword">this</span>.base;</span><br><span class="line">    <span class="hljs-keyword">var</span> b = &#123;</span><br><span class="line">      base : <span class="hljs-number">2</span></span><br><span class="line">    &#125;;</span><br><span class="line">            </span><br><span class="line">    <span class="hljs-keyword">return</span> f.call(b, a);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">console</span>.log(adder.add(<span class="hljs-number">1</span>));         <span class="hljs-comment">// 输出 2</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(adder.addThruCall(<span class="hljs-number">1</span>)); <span class="hljs-comment">// 仍然输出 2（而不是3 ——译者注）</span></span><br></pre></td></tr></table></figure>
 <h3 id="参数调用"><a href="#参数调用" class="headerlink" title="参数调用"></a>参数调用</h3><p>&emsp;箭头函数同样不绑定arguments参数，若是全局下的箭头函数，arguments指向全局，会出现arguments未声明的错误。而当箭头函数的this指向普通函数时，它的arguments同样继承自普通函数，这点还是很好理解的，也是可以利用这个特性去处理外层函数的不定参数。<br><br>&emsp;但是如果需要获得箭头函数的不定量参数呢，没有了arguments怎么做？这就要用到es6的另一个特性，rest参数(…扩展符)。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let fun = (x, ...args)=&gt;&#123;</span><br><span class="line">    console.log(x);</span><br><span class="line">    console.log(args);</span><br><span class="line">&#125;;</span><br><span class="line">fun(1,2,3);</span><br><span class="line">//  1</span><br><span class="line">//  [2,3]</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> fun = <span class="hljs-function">(<span class="hljs-params">x, ...args</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(args);</span><br><span class="line">&#125;;</span><br><span class="line">fun(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);</span><br><span class="line"><span class="hljs-comment">//  1</span></span><br><span class="line"><span class="hljs-comment">//  [2,3]</span></span><br></pre></td></tr></table></figure>
 <p>&emsp;rest参数的详细会再出一个文章介绍，现在大致先了解一下，rest和arguments的区别在于rest是一个真正的数组，可以使用数组的api。rest在普通函数和箭头函数中都可以使用，但必须作为函数参数的最后一位，剩余参数嘛，字面意思也可以理解。</p>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
 <li>箭头函数不能使用构造器，使用new会报错</li>
@@ -200,13 +200,13 @@
 </ul>
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
 <li><p>一条语句返回对象字面量，需要加括号或者直接写成多条语句的return形式。说到这里我好像明白了vue的比较新的版本里data都是return一个对象了，而不是直接写，一个就是这个原因吧，可能vue的解析将其作为箭头函数了</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data:&#123;</span><br><span class="line">    return&#123;</span><br><span class="line">        foo: bar</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data:&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span>&#123;</span><br><span class="line">        foo: bar</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>箭头函数的参数和箭头之间不能换行</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let fun = ()</span><br><span class="line">    =&gt; 1</span><br><span class="line">//  报错</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> fun = ()</span><br><span class="line">    =&gt; <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-comment">//  报错</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>箭头函数的解析顺序相对靠前，虽然箭头不是运算符，但是箭头函数具有与常规函数不同的特殊运算符优先级解析规则。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let bool = false || ()=&gt;true;</span><br><span class="line">//  箭头函数先执行，false则因为懒惰机制不会参与计算</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">let</span> bool = <span class="hljs-literal">false</span> || <span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span><span class="hljs-literal">true</span>;</span><br><span class="line"><span class="hljs-comment">//  箭头函数先执行，false则因为懒惰机制不会参与计算</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>&emsp;箭头函数在一些简单的运算处理中是很方便简洁的，但是在复杂的逻辑以及多重嵌套里，因为上下文的确定有一定难度，造成代码可读性差。一句话来说就是，箭头函数更适合非方法的函数，或者本来就是需要作为匿名函数的地方，因为箭头函数也是匿名函数。</p>
@@ -266,6 +266,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/24/template-string/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">ES6--模板字符串</span>
+            </a>
+        </div>
+        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/23/interview/">
@@ -323,7 +330,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        4
                     </p>
                 </div>
             </div>
@@ -401,7 +408,7 @@
                 <span class="level-item">JavaScript</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/JavaScript/ES6/">
@@ -409,7 +416,7 @@
                 <span class="level-item">ES6</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -471,7 +478,7 @@
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -487,6 +494,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/03/24/template-string/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6--模板字符串">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-24T06:35:36.000Z">2019-03-24</time></div>
+                    <a href="/2019/03/24/template-string/" class="has-link-black-ter is-size-6">ES6--模板字符串</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a> / <a class="has-link-grey -link" href="/categories/JavaScript/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -560,7 +586,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/JavaScript/">
                         <span class="tag">JavaScript</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -636,7 +662,7 @@
                     <span class="level-item">三月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -652,6 +678,25 @@
         <h3 class="menu-label">
             最新文章
         </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/03/24/template-string/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6--模板字符串">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-03-24T06:35:36.000Z">2019-03-24</time></div>
+                    <a href="/2019/03/24/template-string/" class="has-link-black-ter is-size-6">ES6--模板字符串</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a> / <a class="has-link-grey -link" href="/categories/JavaScript/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
         
         <article class="media">
             
@@ -725,7 +770,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/JavaScript/">
                         <span class="tag">JavaScript</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
