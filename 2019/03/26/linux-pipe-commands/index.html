@@ -2,19 +2,27 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>分类: Desgin Patterns - oGsLP</title>
+<title>一道linux管道题目来学习管道命令 - oGsLP</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="oGsLP">
-<meta property="og:url" content="http://yoursite.com/categories/Java/Desgin-Patterns/index.html">
+    <meta name="description" content="&amp;emsp;寒假之前Linux程序设计这门课老师留了一道很有难度的shell cmd题目，大概要求用一行命令来完成对一个目录结构下的makefile文件全复制到另一个拥有相同目录结构的目录下，因为又不小的难度，所以可以用3行及以内linux命令来实现。肯定是要用管道的，但是当时自己对管道不是很熟悉，有点投机取巧用了偏方3行命令来写。期末复习的时候决定自己研究一下管道的知识。">
+<meta name="keywords" content="管道,shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一道linux管道题目来学习管道命令">
+<meta property="og:url" content="http://yoursite.com/2019/03/26/linux-pipe-commands/index.html">
 <meta property="og:site_name" content="oGsLP">
+<meta property="og:description" content="&amp;emsp;寒假之前Linux程序设计这门课老师留了一道很有难度的shell cmd题目，大概要求用一行命令来完成对一个目录结构下的makefile文件全复制到另一个拥有相同目录结构的目录下，因为又不小的难度，所以可以用3行及以内linux命令来实现。肯定是要用管道的，但是当时自己对管道不是很熟悉，有点投机取巧用了偏方3行命令来写。期末复习的时候决定自己研究一下管道的知识。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/03/26/linux-pipe-commands/dir_1.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/26/linux-pipe-commands/dir_2.png">
+<meta property="og:updated_time" content="2019-03-26T12:19:04.949Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="oGsLP">
+<meta name="twitter:title" content="一道linux管道题目来学习管道命令">
+<meta name="twitter:description" content="&amp;emsp;寒假之前Linux程序设计这门课老师留了一道很有难度的shell cmd题目，大概要求用一行命令来完成对一个目录结构下的makefile文件全复制到另一个拥有相同目录结构的目录下，因为又不小的难度，所以可以用3行及以内linux命令来实现。肯定是要用管道的，但是当时自己对管道不是很熟悉，有点投机取巧用了偏方3行命令来写。期末复习的时候决定自己研究一下管道的知识。">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/26/linux-pipe-commands/dir_1.png">
 
 
 
@@ -88,7 +96,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="oGsLP" height="28">
+                <img src="/images/logo.svg" alt="一道linux管道题目来学习管道命令" height="28">
             
             </a>
         </div>
@@ -120,6 +128,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -134,36 +146,22 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">分类</a></li>
-            
-            <li><a href="/categories/Java/">Java</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">Desgin Patterns</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-24T08:49:29.000Z">2019-03-24</time>
+                <time class="level-item has-text-grey" datetime="2019-03-26T09:22:24.000Z">2019-03-26</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Java/">Java</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Java/Desgin-Patterns/">Desgin Patterns</a>
+                <a class="has-link-grey -link" href="/categories/Linux/">Linux</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Linux/Commands/">Commands</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    12 分钟 读完 (大约 1726 个字)
+                    13 分钟 读完 (大约 1884 个字)
                 </span>
                 
                 
@@ -172,23 +170,65 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/03/24/visitor-pattern/">设计模式--Visitor模式</a>
+                一道linux管道题目来学习管道命令
             
         </h1>
         <div class="content">
             <blockquote>
-<p>临近期末。。才开学一个月就要期末了没错，体系结构还有linux程序设计感觉比较虚，作为老师上课重点讲了好多节课的visitor模式也不是很明白，作业也是半知半懂的情况下完成的，还是有必要把visitor单独拎出来作为一个专题研究一下的才好。以后的时间还得把别的设计模式也好好学学。以下是摘自老师的课件的修改版</p>
+<p>&emsp;寒假之前Linux程序设计这门课老师留了一道很有难度的shell cmd题目，大概要求用一行命令来完成对一个目录结构下的makefile文件全复制到另一个拥有相同目录结构的目录下，因为又不小的难度，所以可以用3行及以内linux命令来实现。肯定是要用管道的，但是当时自己对管道不是很熟悉，有点投机取巧用了偏方3行命令来写。期末复习的时候决定自己研究一下管道的知识。</p>
 </blockquote>
+<a id="more"></a>
+<hr>
+<blockquote>
+<p>&emsp; 首先，题目如下</p>
+</blockquote>
+<p>&emsp;假设当前Linux系统的目录/tmp/gsl下的文件结构如下图所示，其中有很多Makefile分散在各个子目录下(但并非每个子目录都存在Makefile，例如block目录下就没有)。<br><br><img src="/2019/03/26/linux-pipe-commands/dir_1.png" alt></p>
+<p>&emsp;要求将这些Makefile拷贝到目录/home/usrname/gsl的对应子目录下(假设/home/usrname/gsl下已经存在blas，bspline等子目录)，使得拷贝后/home/usrname/gsl下的文件如下图所示：</p>
+<p><img src="/2019/03/26/linux-pipe-commands/dir_2.png" alt></p>
+<p>&emsp;<em>要求：该要求实际上是可以用一行命令完成的，难度较高。同学们实际做作业时，允许使用两到三行命令，但不允许使用任何编程实现(即不允许Shell脚本的循环，分支等控制流程，可以使用管道)。<br><br>&emsp;</em>提示：利用find，sed和sh命令。</p>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="| 问题分析"></a>| 问题分析</h3><p>&emsp;题目要求在于整体的<strong>保持目录结构</strong>的前提下复制文件，首先想到的肯定是cp命令，先找到所有的Makefile文件，然后利用文件完整路径，使用sed的正则替换修改前缀，进行逐一复制，便可完成。但是想在一条命令里面就实现这项功能还是要用到管道的知识。</p>
+<h3 id="尝试管道的失败"><a href="#尝试管道的失败" class="headerlink" title="| 尝试管道的失败"></a>| 尝试管道的失败</h3><p>&emsp;思路本来是很清晰的 首先利用find 找到所有Makefile文件，而且这样的文件都是完整路径的，然后就使用sed替换, 最后cp, 但是由于管道的知识不熟悉，写出了以下的代码<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /tmp/gsl/ -name 'Makefile' | sed 's/^\/tmp\/gsl/\/home\/username/g' | cp</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;然后就下不下去了，cp两个参数该咋写啊。。而且这怎么保证是一条条执行的。<br><br>&emsp;后来试了好多方法，不过好像都不太行，然后就有了以下的方法。</p>
+<h3 id="我的做法（投机取巧）"><a href="#我的做法（投机取巧）" class="headerlink" title="| 我的做法（投机取巧）"></a>| 我的做法（投机取巧）</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp</span><br><span class="line">find gsl/ -name &apos;Makefile&apos; | xargs tar -czf test.tar.gz</span><br><span class="line">tar -zxvf test.tar.gz -C /home/usrname</span><br></pre></td></tr></table></figure>
+<p>&emsp; 没错，我写了三条命令，不过这道题目能不用脚本写我觉得就很不错了23333<br><br>&emsp; 这里使用了tar压缩解压文件的时间时候能够保留文件的目录结构，在这里压缩再到那里解压就行了，但是由于相对路径的问题，多写了一行cd，自己也没找到替代这行的办法。<br><br>&emsp; 给很多同学看了这个方法，都觉得很有意思2333，的确有点不走寻常路的赶脚，但是问题还是要解决啊，这个毕竟没有用到老师教的知识。</p>
+<h3 id="正确做法"><a href="#正确做法" class="headerlink" title="| 正确做法"></a>| 正确做法</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /tmp/gsl/ -name &apos;Makefile&apos; | sed &apos;s/^\/tmp\/gsl\(.*\)/cp \/tmp\/gsl\1 \/home\/username\1/g&apos; | sh</span><br></pre></td></tr></table></figure>
+<p>&emsp;当同学给我讲原理的时候我才发现我对管道的理解是完全错误的。。难怪写不出来，上面尝试的代码简直就是搞笑的哈哈哈。<br>&emsp;这个解法技巧性的确很强，不得不说。简单说一下，第一步就是找到所有Makefile并获得完整路径，用管道传给sed，然后的意思呢，是指利用每个/tmp/gsl/…Makefile，sed替换出cp /tmp/gsl/…Makefile /home/username/…Makefile 这个命令，同学说，管道相当于把结果写入一个shell脚本，然后再传给sh命令去执行脚本就好了。的确很精妙，不过我有点怀疑，觉得管道并不是输出成脚本，我记得应该是把处处作为下一个的输入，就比如sed我不一定要把文件名做参数，字符串也行。<br><br>&emsp;于是我决定一谈个究竟，管道究竟有什么奥妙之处</p>
+<h3 id="管道原理"><a href="#管道原理" class="headerlink" title="| 管道原理"></a>| 管道原理</h3><blockquote>
+<p>&emsp; 管道是一种通信机制，通常用于进程间的通信（也可通过socket进行网络通信），它表现出来的形式将前面每一个进程的输出（stdout）直接作为下一个进程的输入（stdin）。</p>
+</blockquote>
+<p>&emsp; 在linux命令中，能够使用管道的命令统称为管道命令，管道命令使用|作为界定符号,管道命令仅能处理standard output,对于standard error output会予以忽略。<br><br>&emsp;less,more,head,tail…都是可以接受standard input的命令，所以他们是管道命令<br><br>&emsp;ls,cp,mv并不会接受standard input的命令，所以他们就不是管道命令了。<br><br>&emsp; 管道命令必须要能够接受来自前一个命令的数据成为standard input继续处理才行。</p>
+<hr>
+<p>&emsp;现在再对上面的答案进行分析就很清晰了。同学说的当成写入文件在把文件作为参数其实是把标准输入输出说的复杂化了，虽然具象化了，但我们还是要对标准输入输出有所了解才行。</p>
+<h3 id="常见的管道命令"><a href="#常见的管道命令" class="headerlink" title="| 常见的管道命令"></a>| 常见的管道命令</h3><ul>
+<li>选取命令 cut grep</li>
+<li>排序命令 sort,wc,uniq</li>
+<li>双重定向命令 tee</li>
+<li>字符转换命令 tr, col, join, paste, expand</li>
+<li>切割命令 split</li>
+<li>sed, grep, awk, xargs, printf</li>
+<li>……</li>
+</ul>
+<blockquote>
+<p>&emsp;这些分类并不是判断是否是管道命令的标准，更重要的还是根据一个命令的输入输出去判断，根据管道的定义去判断，灵活运用。</p>
+</blockquote>
+<h3 id="xargs"><a href="#xargs" class="headerlink" title="| xargs"></a>| xargs</h3><p>&emsp; 我在自己的方法里用的这个xargs其实也是管道命令的一种，它的作用可以说是比较有趣了。</p>
+<blockquote>
+<p>&emsp; xargs 命令分别通过分割（-i）与分批（-n）行为产生某个命令的参数。接收stdin，以指定字符进行分隔，将stdin分成多个arguments<br><br>&emsp;主要用于连接两个非管道命令</p>
+</blockquote>
+<p>&emsp;通俗的将，xargs的作用就是将管道传来的标准输入分割成多个输入交由后面的命令依次执行。用在本题中好比我把好几个cp指令传过来，然后依次执行一个sh <code>cp ....</code>, 不用xargs的话就是相当于一次性包含多个cp命令的shell脚本交由sh去执行。<br><br>&emsp;xargs还是有很大的用途的。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>&emsp;小小的管道，如此奥妙。其实在很多的地方都有管道的应用，例如软件体系结构的管道过滤器风格，但是无论在哪里的应用，其原理都大差不离，真正弄懂管道的原理，一切与之有关的技术、难题也就都迎刃而解了。</p>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/03/24/visitor-pattern/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/shell/">shell</a>, <a class="has-link-grey -link" href="/tags/管道/">管道</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -196,9 +236,50 @@
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat_pay.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/26/J2ee-pattern-1/">
+                <span class="level-item">从Spring和MyBatis来理解反射机制、动态代理模式、责任链模式和观察者模式等（一）</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -389,6 +470,49 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><ul class="menu-list"><li>
+        <a class="is-flex" href="#问题分析">
+        <span class="has-mr-6">1.1</span>
+        <span>| 问题分析</span>
+        </a></li><li>
+        <a class="is-flex" href="#尝试管道的失败">
+        <span class="has-mr-6">1.2</span>
+        <span>| 尝试管道的失败</span>
+        </a></li><li>
+        <a class="is-flex" href="#我的做法（投机取巧）">
+        <span class="has-mr-6">1.3</span>
+        <span>| 我的做法（投机取巧）</span>
+        </a></li><li>
+        <a class="is-flex" href="#正确做法">
+        <span class="has-mr-6">1.4</span>
+        <span>| 正确做法</span>
+        </a></li><li>
+        <a class="is-flex" href="#管道原理">
+        <span class="has-mr-6">1.5</span>
+        <span>| 管道原理</span>
+        </a></li><li>
+        <a class="is-flex" href="#常见的管道命令">
+        <span class="has-mr-6">1.6</span>
+        <span>| 常见的管道命令</span>
+        </a></li><li>
+        <a class="is-flex" href="#xargs">
+        <span class="has-mr-6">1.7</span>
+        <span>| xargs</span>
+        </a></li></ul><li>
+        <a class="is-flex" href="#总结">
+        <span class="has-mr-6">2</span>
+        <span>总结</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
@@ -912,7 +1036,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="oGsLP" height="28">
+                    <img src="/images/logo.svg" alt="一道linux管道题目来学习管道命令" height="28">
                 
                 </a>
                 <p class="is-size-7">
