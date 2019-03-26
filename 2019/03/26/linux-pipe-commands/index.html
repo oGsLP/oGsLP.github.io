@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/03/26/linux-pipe-commands/dir_1.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/26/linux-pipe-commands/dir_2.png">
-<meta property="og:updated_time" content="2019-03-26T12:19:04.949Z">
+<meta property="og:updated_time" content="2019-03-26T12:21:49.777Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一道linux管道题目来学习管道命令">
 <meta name="twitter:description" content="&amp;emsp;寒假之前Linux程序设计这门课老师留了一道很有难度的shell cmd题目，大概要求用一行命令来完成对一个目录结构下的makefile文件全复制到另一个拥有相同目录结构的目录下，因为又不小的难度，所以可以用3行及以内linux命令来实现。肯定是要用管道的，但是当时自己对管道不是很熟悉，有点投机取巧用了偏方3行命令来写。期末复习的时候决定自己研究一下管道的知识。">
@@ -161,7 +161,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    13 分钟 读完 (大约 1884 个字)
+                    13 分钟 读完 (大约 1882 个字)
                 </span>
                 
                 
@@ -187,11 +187,11 @@
 <p><img src="/2019/03/26/linux-pipe-commands/dir_2.png" alt></p>
 <p>&emsp;<em>要求：该要求实际上是可以用一行命令完成的，难度较高。同学们实际做作业时，允许使用两到三行命令，但不允许使用任何编程实现(即不允许Shell脚本的循环，分支等控制流程，可以使用管道)。<br><br>&emsp;</em>提示：利用find，sed和sh命令。</p>
 <h3 id="问题分析"><a href="#问题分析" class="headerlink" title="| 问题分析"></a>| 问题分析</h3><p>&emsp;题目要求在于整体的<strong>保持目录结构</strong>的前提下复制文件，首先想到的肯定是cp命令，先找到所有的Makefile文件，然后利用文件完整路径，使用sed的正则替换修改前缀，进行逐一复制，便可完成。但是想在一条命令里面就实现这项功能还是要用到管道的知识。</p>
-<h3 id="尝试管道的失败"><a href="#尝试管道的失败" class="headerlink" title="| 尝试管道的失败"></a>| 尝试管道的失败</h3><p>&emsp;思路本来是很清晰的 首先利用find 找到所有Makefile文件，而且这样的文件都是完整路径的，然后就使用sed替换, 最后cp, 但是由于管道的知识不熟悉，写出了以下的代码<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /tmp/gsl/ -name 'Makefile' | sed 's/^\/tmp\/gsl/\/home\/username/g' | cp</span><br></pre></td></tr></table></figure></p>
+<h3 id="尝试管道的失败"><a href="#尝试管道的失败" class="headerlink" title="| 尝试管道的失败"></a>| 尝试管道的失败</h3><p>&emsp;思路本来是很清晰的 首先利用find 找到所有Makefile文件，而且这样的文件都是完整路径的，然后就使用sed替换, 最后cp, 但是由于管道的知识不熟悉，写出了以下的代码<br><figure class="highlight shell hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /tmp/gsl/ -name 'Makefile' | sed 's/^\/tmp/\/home\/username/g' | cp</span><br></pre></td></tr></table></figure></p>
 <p>&emsp;然后就下不下去了，cp两个参数该咋写啊。。而且这怎么保证是一条条执行的。<br><br>&emsp;后来试了好多方法，不过好像都不太行，然后就有了以下的方法。</p>
 <h3 id="我的做法（投机取巧）"><a href="#我的做法（投机取巧）" class="headerlink" title="| 我的做法（投机取巧）"></a>| 我的做法（投机取巧）</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /tmp</span><br><span class="line">find gsl/ -name &apos;Makefile&apos; | xargs tar -czf test.tar.gz</span><br><span class="line">tar -zxvf test.tar.gz -C /home/usrname</span><br></pre></td></tr></table></figure>
 <p>&emsp; 没错，我写了三条命令，不过这道题目能不用脚本写我觉得就很不错了23333<br><br>&emsp; 这里使用了tar压缩解压文件的时间时候能够保留文件的目录结构，在这里压缩再到那里解压就行了，但是由于相对路径的问题，多写了一行cd，自己也没找到替代这行的办法。<br><br>&emsp; 给很多同学看了这个方法，都觉得很有意思2333，的确有点不走寻常路的赶脚，但是问题还是要解决啊，这个毕竟没有用到老师教的知识。</p>
-<h3 id="正确做法"><a href="#正确做法" class="headerlink" title="| 正确做法"></a>| 正确做法</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /tmp/gsl/ -name &apos;Makefile&apos; | sed &apos;s/^\/tmp\/gsl\(.*\)/cp \/tmp\/gsl\1 \/home\/username\1/g&apos; | sh</span><br></pre></td></tr></table></figure>
+<h3 id="正确做法"><a href="#正确做法" class="headerlink" title="| 正确做法"></a>| 正确做法</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /tmp/gsl/ -name &apos;Makefile&apos; | sed &apos;s/^\/tmp\(.*\)/cp \/tmp\/gsl\1 \/home\/username\1/g&apos; | sh</span><br></pre></td></tr></table></figure>
 <p>&emsp;当同学给我讲原理的时候我才发现我对管道的理解是完全错误的。。难怪写不出来，上面尝试的代码简直就是搞笑的哈哈哈。<br>&emsp;这个解法技巧性的确很强，不得不说。简单说一下，第一步就是找到所有Makefile并获得完整路径，用管道传给sed，然后的意思呢，是指利用每个/tmp/gsl/…Makefile，sed替换出cp /tmp/gsl/…Makefile /home/username/…Makefile 这个命令，同学说，管道相当于把结果写入一个shell脚本，然后再传给sh命令去执行脚本就好了。的确很精妙，不过我有点怀疑，觉得管道并不是输出成脚本，我记得应该是把处处作为下一个的输入，就比如sed我不一定要把文件名做参数，字符串也行。<br><br>&emsp;于是我决定一谈个究竟，管道究竟有什么奥妙之处</p>
 <h3 id="管道原理"><a href="#管道原理" class="headerlink" title="| 管道原理"></a>| 管道原理</h3><blockquote>
 <p>&emsp; 管道是一种通信机制，通常用于进程间的通信（也可通过socket进行网络通信），它表现出来的形式将前面每一个进程的输出（stdout）直接作为下一个进程的输入（stdin）。</p>
