@@ -17,7 +17,7 @@
 <meta property="og:description" content="关于前端的html基础知识的补盲，和一些重要知识。何谓补盲,就是那些容易被忽略的，多数情况下采用默认的一些设置等等。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/04/15/html-base/semantization.png">
-<meta property="og:updated_time" content="2019-04-15T14:52:09.139Z">
+<meta property="og:updated_time" content="2019-04-16T04:45:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Html基础补盲">
 <meta name="twitter:description" content="关于前端的html基础知识的补盲，和一些重要知识。何谓补盲,就是那些容易被忽略的，多数情况下采用默认的一些设置等等。">
@@ -160,7 +160,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1597 个字)
+                    13 分钟 读完 (大约 1921 个字)
                 </span>
                 
                 
@@ -180,67 +180,8 @@
 <hr>
 <h2 id="Html"><a href="#Html" class="headerlink" title="Html"></a>Html</h2><p><strong>Hypertext markup language, 超文本标记语言</strong><br>知道html的详细名称，怎么能不知道超文本和markup的意思呢？<br>&emsp;<em>hypertext</em>: 超文本是用超链接的方法，将各种不同空间的文字信息组织在一起的网状文本<br>&emsp;<em>markup与markdown</em>: 博客就是用markdown语言写的，然后转成了markup标记语言html呈现在浏览器中的。标记语言的意思，即在文本中加入一些说明符号来指示排版要求；Markdown 就是一种轻量级的标记语言（a lightweight Markup language). 他更简单，语法很简洁，易于学习。</p>
 <p><strong>Markdown 就是一种markup language，一种简单易用的排版语法。</strong></p>
-<h3 id="head"><a href="#head" class="headerlink" title="head"></a>head</h3><p>我们往往专注于body中的标签布局等代码的编写却忽略跳过了head标签的一些属性</p>
-<ul>
-<li>title: title定义了html的标题，是必须的属性<ul>
-<li>定义了浏览器工具栏的标题</li>
-<li>网页被添加至收藏夹中的标题</li>
-<li>显示在搜索引擎结果页面的标题</li>
-</ul>
-</li>
-<li>base: 标签描述了基本的链接地址/链接目标，该标签作为HTML文档中所有的链接标签的默认链接</li>
-<li><p>meta: 标签提供了元数据.元数据也不显示在页面上，但会被浏览器解析。</p>
-<ul>
-<li>通常用于指定网页的描述，关键词，文件的最后修改时间，作者，和其他元数据。</li>
-<li><p>元数据可以使用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他Web服务</p>
-<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"keywords"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"HTML, CSS, JavaScript"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Html base"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"author"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"oGsLP"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"refresh"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"30"</span>&gt;</span> // 每30s刷新界面</span><br></pre></td></tr></table></figure>
-<p><a href="../html-meta/">meta详细知识</a></p>
-</li>
-</ul>
-</li>
-<li>style,script,link不做赘述</li>
-</ul>
-<h3 id="内联与外引、嵌入"><a href="#内联与外引、嵌入" class="headerlink" title="内联与外引、嵌入"></a>内联与外引、嵌入</h3><ul>
-<li>主要针对js与css，内联即在html中使用style和script标签，嵌入则直接在标签中使用style和监听事件的js，外引则使用import或者head中的link、script等方式引用外部资源。</li>
-<li>内联的好处在于，有效减少 HTTP 请求，提升页面性能，缓解服务器压力。浏览器加载完才能渲染页面。但是维护不方便，代码复用不方便。</li>
-<li>外引的好处是html,js,css职责分离，减少耦合，便于维护，但是会增大http请求。</li>
-<li>嵌入实质上是一种侵入式js/css，除非一些特殊的情况不推荐使用，例如特定的功能等。</li>
-</ul>
-<h3 id="块级元素与行内（内联）元素"><a href="#块级元素与行内（内联）元素" class="headerlink" title="块级元素与行内（内联）元素"></a>块级元素与行内（内联）元素</h3><ul>
-<li>块级元素<ul>
-<li>总是在新行上开始</li>
-<li>高度，行高以及外边距和内边距都可控制</li>
-<li>宽度缺省是它的容器的100%</li>
-<li>块级元素可以容纳行内元素或者其他块级元素</li>
-</ul>
-</li>
-<li>行内元素<ul>
-<li>和其他元素都在一行上</li>
-<li>高，行高以及外边距和内边距不可改变</li>
-<li>宽度就是它的文字或者图片的宽度，不可改变</li>
-<li>内联元素只能容纳文本或者其他内联元素</li>
-</ul>
-</li>
-<li>对于行内元素:<ul>
-<li>设置宽度width无效</li>
-<li>设置高度height无效，可以通过line-height来设置</li>
-<li>设置margin、padding只有左右有效</li>
-</ul>
-</li>
-<li>通过display属性可以对行内元素和块级元素进行切换（inline,block,inline-block）</li>
-<li>块级元素<br>address, article, aside, audio, blockquote, canvas, caption, dd, div, dl, dt, details, fieldset, figcaption, figure, footer, form, h*, header, hr, legend, li, menu, meter, nav, noframes, noscript, ol, output, p, pre, section, table, tbody, td, tfoot, th, thead, time, tr, ul</li>
-<li>行内元素<br>a, abbr, acronym, b, bdo, big, br, button, cite, code, command, dfn, del, em, embed, i, img, input, kbd, label, map, mark, objec, progress, q, samp, select, small, span, strong, sub, sup, textarea, time, tt, var, video, wbr</li>
-</ul>
-<h3 id="html语义化"><a href="#html语义化" class="headerlink" title="html语义化"></a>html语义化</h3><p>&emsp;&emsp;<strong>HTML语义化</strong>是指仅仅从 HTML 元素上就能看出页面的大致结构，比如需要强调的内容可以放在&lt;strong>标签中，而不是通过样式设置&lt;span>标签去做。不同浏览器对 HTML 元素的解析可能有差异，HTML 语义化便是在抛开样式之后，页面能有一个友好的展示效果。我们力求让页面有良好的结构，让页面的元素有含义，同时利于被搜索引擎解析，利于 SEO。HTML 语义化的建议</p>
-<ul>
-<li>少使用无意义的&lt;div>、&lt;span> 标签；</li>
-<li>在&lt;label> 标签中设置 for 属性和对应的&lt;input>关联起来；</li>
-<li>设置&lt;img> 标签的 alt 属性，给&lt;a>标签设置 title 属性，利于 SEO；</li>
-<li>在页面的标题部分使用&lt;h1>~&lt;h6>标签，不需要给它们加多余的样式；</li>
-<li>与表单、有序列表、无序列表相关的标签不要单独使用。</li>
-</ul>
-<p>HTML5 也新增了一些语义化的元素，我们通过标签名就能判断标签内容。使用语义元素的页面大致结构如下<br><img src="/2019/04/15/html-base/semantization.png" alt></p>
-<h3 id="htm-html-xhtml-xml"><a href="#htm-html-xhtml-xml" class="headerlink" title="htm,html,xhtml,xml"></a>htm,html,xhtml,xml</h3><ul>
+<hr>
+<h3 id="htm-html-xhtml-xml"><a href="#htm-html-xhtml-xml" class="headerlink" title="#htm,html,xhtml,xml"></a>#htm,html,xhtml,xml</h3><ul>
 <li>xml与别的三个本质上不一样，xml是可扩展标记语言，他的目的在于数据的传输</li>
 <li>html与htm没有本质上的区别，只是Windows和UNIX对抗的产物。<ul>
 <li>DOS仅能识别8+3的文件名，所以<em>.htm的命名方法可以被DOS识别，而</em>.html的文件命名方式不能被之识别。</li>
@@ -270,7 +211,189 @@
 </ul>
 </li>
 </ul>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<hr>
+<h3 id="head"><a href="#head" class="headerlink" title="#head"></a>#head</h3><p>我们往往专注于body中的标签布局等代码的编写却忽略跳过了head标签的一些属性</p>
+<ul>
+<li>title: title定义了html的标题，是必须的属性<ul>
+<li>定义了浏览器工具栏的标题</li>
+<li>网页被添加至收藏夹中的标题</li>
+<li>显示在搜索引擎结果页面的标题</li>
+</ul>
+</li>
+<li>base: 标签描述了基本的链接地址/链接目标，该标签作为HTML文档中所有的链接标签的默认链接</li>
+<li><p>meta: 标签提供了元数据.元数据也不显示在页面上，但会被浏览器解析。</p>
+<ul>
+<li>通常用于指定网页的描述，关键词，文件的最后修改时间，作者，和其他元数据。</li>
+<li><p>元数据可以使用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他Web服务</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"keywords"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"HTML, CSS, JavaScript"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Html base"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"author"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"oGsLP"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"refresh"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"30"</span>&gt;</span> // 每30s刷新界面</span><br></pre></td></tr></table></figure>
+<p><a href="../html-meta/">meta详细知识</a></p>
+</li>
+</ul>
+</li>
+<li>style,script,link不做赘述</li>
+</ul>
+<hr>
+<h3 id="内联与外引、嵌入"><a href="#内联与外引、嵌入" class="headerlink" title="#内联与外引、嵌入"></a>#内联与外引、嵌入</h3><ul>
+<li>主要针对js与css，内联即在html中使用style和script标签，嵌入则直接在标签中使用style和监听事件的js，外引则使用import或者head中的link、script等方式引用外部资源。</li>
+<li>内联的好处在于，有效减少 HTTP 请求，提升页面性能，缓解服务器压力。浏览器加载完才能渲染页面。但是维护不方便，代码复用不方便。</li>
+<li>外引的好处是html,js,css职责分离，减少耦合，便于维护，但是会增大http请求。</li>
+<li>嵌入实质上是一种侵入式js/css，除非一些特殊的情况不推荐使用，例如特定的功能等。</li>
+</ul>
+<hr>
+<h3 id="块级元素与行内（内联）元素"><a href="#块级元素与行内（内联）元素" class="headerlink" title="#块级元素与行内（内联）元素"></a>#块级元素与行内（内联）元素</h3><ul>
+<li>块级元素<ul>
+<li>总是在新行上开始</li>
+<li>高度，行高以及外边距和内边距都可控制</li>
+<li>宽度缺省是它的容器的100%</li>
+<li>块级元素可以容纳行内元素或者其他块级元素</li>
+</ul>
+</li>
+<li>行内元素<ul>
+<li>和其他元素都在一行上</li>
+<li>高，行高以及外边距和内边距不可改变</li>
+<li>宽度就是它的文字或者图片的宽度，不可改变</li>
+<li>内联元素只能容纳文本或者其他内联元素</li>
+</ul>
+</li>
+<li>对于行内元素:<ul>
+<li>设置宽度width无效</li>
+<li>设置高度height无效，可以通过line-height来设置</li>
+<li>设置margin、padding只有左右有效</li>
+</ul>
+</li>
+<li>通过display属性可以对行内元素和块级元素进行切换（inline,block,inline-block）</li>
+<li>块级元素<br>address, article, aside, audio, blockquote, canvas, caption, dd, div, dl, dt, details, fieldset, figcaption, figure, footer, form, h*, header, hr, legend, li, menu, meter, nav, noframes, noscript, ol, output, p, pre, section, table, tbody, td, tfoot, th, thead, time, tr, ul</li>
+<li>行内元素<br>a, abbr, acronym, b, bdo, big, br, button, cite, code, command, dfn, del, em, embed, i, img, input, kbd, label, map, mark, objec, progress, q, samp, select, small, span, strong, sub, sup, textarea, time, tt, var, video, wbr</li>
+</ul>
+<hr>
+<h3 id="html语义化"><a href="#html语义化" class="headerlink" title="#html语义化"></a>#html语义化</h3><p>&emsp;&emsp;<strong>HTML语义化</strong>是指仅仅从 HTML 元素上就能看出页面的大致结构，比如需要强调的内容可以放在&lt;strong>标签中，而不是通过样式设置&lt;span>标签去做。不同浏览器对 HTML 元素的解析可能有差异，HTML 语义化便是在抛开样式之后，页面能有一个友好的展示效果。我们力求让页面有良好的结构，让页面的元素有含义，同时利于被搜索引擎解析，利于 SEO。HTML 语义化的建议</p>
+<ul>
+<li>少使用无意义的&lt;div>、&lt;span> 标签；</li>
+<li>在&lt;label> 标签中设置 for 属性和对应的&lt;input>关联起来；</li>
+<li>设置&lt;img> 标签的 alt 属性，给&lt;a>标签设置 title 属性，利于 SEO；</li>
+<li>在页面的标题部分使用&lt;h1>~&lt;h6>标签，不需要给它们加多余的样式；</li>
+<li>与表单、有序列表、无序列表相关的标签不要单独使用。</li>
+</ul>
+<p>HTML5 也新增了一些语义化的元素，我们通过标签名就能判断标签内容。使用语义元素的页面大致结构如下<br><img src="/2019/04/15/html-base/semantization.png" alt></p>
+<hr>
+<h3 id="Html全局属性"><a href="#Html全局属性" class="headerlink" title="#Html全局属性"></a>#Html全局属性</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th style="text-align:center">是否H5新增</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accesskey</td>
+<td>设置访问元素的键盘快捷键。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>class</td>
+<td>元素的类名</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>contenteditable</td>
+<td>规定是否可编辑元素内容</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td>contextmenu</td>
+<td>指定元素的上下文菜单</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td>data-*</td>
+<td>用于嵌入自定义数据</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>规定文本的排列方向 ltr/rtr/auto</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>draggable</td>
+<td>元素能否拖动</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td>dropzone</td>
+<td>指定是否将数据复制，移动，或链接 copy/move/link</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>隐藏元素但要渲染</td>
+<td style="text-align:center">+</td>
+</tr>
+<tr>
+<td>id</td>
+<td>id</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>lang</td>
+<td>语言代码</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>spellcheck</td>
+<td>检测元素是否拼写错误</td>
+<td style="text-align:center">+ -</td>
+</tr>
+<tr>
+<td>style</td>
+<td>元素行内样式</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>tabindex</td>
+<td>带有指定的 tab 键导航顺序的链接</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>title</td>
+<td>规定元素的额外信息（可在工具提示中显示）</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>translate</td>
+<td>指定是否一个元素的值在页面载入时是否需要翻译</td>
+<td style="text-align:center">+ -</td>
+</tr>
+</tbody>
+</table>
+<h3 id="事件"><a href="#事件" class="headerlink" title="#事件"></a>#事件</h3><h4 id="窗口事件属性（Window-Event-Attributes）"><a href="#窗口事件属性（Window-Event-Attributes）" class="headerlink" title="窗口事件属性（Window Event Attributes）"></a>窗口事件属性（Window Event Attributes）</h4><p>由窗口触发该事件 (适用于 &lt;body> 标签):</p>
+<ul>
+<li>onafterprint, onbeforeprint, onload, onbeforeunload, onunload</li>
+<li>onerror, onoffline, ononline</li>
+<li>onhaschange, onmessage, onblur, onfocus</li>
+<li>onpagehide, onpageshow, onpopstate</li>
+<li>onredo, onresize, onstorage, onundo</li>
+</ul>
+<h4 id="表单事件-Form-Events"><a href="#表单事件-Form-Events" class="headerlink" title="表单事件 (Form Events)"></a>表单事件 (Form Events)</h4><p>适用于所有html元素，但该元素必须在form表单内</p>
+<ul>
+<li>onblur, onchange, oncontextmenu, onfocus </li>
+<li>onformchange, onforminput, oninput</li>
+<li>oninvalid, onreset, onselect, onsubmit</li>
+</ul>
+<h4 id="键盘事件-Keyboard-Events"><a href="#键盘事件-Keyboard-Events" class="headerlink" title="键盘事件 (Keyboard Events)"></a>键盘事件 (Keyboard Events)</h4><ul>
+<li>onkeydown, onkeypress, onkeyup</li>
+</ul>
+<h4 id="鼠标事件-Mouse-Events"><a href="#鼠标事件-Mouse-Events" class="headerlink" title="鼠标事件 (Mouse Events)"></a>鼠标事件 (Mouse Events)</h4><ul>
+<li>onclick, ondbclick</li>
+<li>ondrag, ondragend, ondragenter, ondragleave, ondragover, ondragstart, ondrop</li>
+<li>onmousedown, onmouseout, onmouseover, onmouseup, onmousewheel, onscroll</li>
+</ul>
+<h4 id="多媒体事件-Media-Events"><a href="#多媒体事件-Media-Events" class="headerlink" title="多媒体事件 (Media Events)"></a>多媒体事件 (Media Events)</h4><blockquote>
+<p>暂不做了解</p>
+</blockquote>
+<hr>
+<h3 id="其他"><a href="#其他" class="headerlink" title="#其他"></a>#其他</h3><ul>
 <li>iframe: src属性导向另一个网页</li>
 </ul>
 
@@ -552,29 +675,57 @@
         <span class="has-mr-6">1</span>
         <span>Html</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#head">
+        <a class="is-flex" href="#htm-html-xhtml-xml">
         <span class="has-mr-6">1.1</span>
-        <span>head</span>
+        <span>#htm,html,xhtml,xml</span>
+        </a></li><li>
+        <a class="is-flex" href="#head">
+        <span class="has-mr-6">1.2</span>
+        <span>#head</span>
         </a></li><li>
         <a class="is-flex" href="#内联与外引、嵌入">
-        <span class="has-mr-6">1.2</span>
-        <span>内联与外引、嵌入</span>
+        <span class="has-mr-6">1.3</span>
+        <span>#内联与外引、嵌入</span>
         </a></li><li>
         <a class="is-flex" href="#块级元素与行内（内联）元素">
-        <span class="has-mr-6">1.3</span>
-        <span>块级元素与行内（内联）元素</span>
+        <span class="has-mr-6">1.4</span>
+        <span>#块级元素与行内（内联）元素</span>
         </a></li><li>
         <a class="is-flex" href="#html语义化">
-        <span class="has-mr-6">1.4</span>
-        <span>html语义化</span>
-        </a></li><li>
-        <a class="is-flex" href="#htm-html-xhtml-xml">
         <span class="has-mr-6">1.5</span>
-        <span>htm,html,xhtml,xml</span>
+        <span>#html语义化</span>
         </a></li><li>
-        <a class="is-flex" href="#其他">
+        <a class="is-flex" href="#Html全局属性">
         <span class="has-mr-6">1.6</span>
-        <span>其他</span>
+        <span>#Html全局属性</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件">
+        <span class="has-mr-6">1.7</span>
+        <span>#事件</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#窗口事件属性（Window-Event-Attributes）">
+        <span class="has-mr-6">1.7.1</span>
+        <span>窗口事件属性（Window Event Attributes）</span>
+        </a></li><li>
+        <a class="is-flex" href="#表单事件-Form-Events">
+        <span class="has-mr-6">1.7.2</span>
+        <span>表单事件 (Form Events)</span>
+        </a></li><li>
+        <a class="is-flex" href="#键盘事件-Keyboard-Events">
+        <span class="has-mr-6">1.7.3</span>
+        <span>键盘事件 (Keyboard Events)</span>
+        </a></li><li>
+        <a class="is-flex" href="#鼠标事件-Mouse-Events">
+        <span class="has-mr-6">1.7.4</span>
+        <span>鼠标事件 (Mouse Events)</span>
+        </a></li><li>
+        <a class="is-flex" href="#多媒体事件-Media-Events">
+        <span class="has-mr-6">1.7.5</span>
+        <span>多媒体事件 (Media Events)</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#其他">
+        <span class="has-mr-6">1.8</span>
+        <span>#其他</span>
         </a></li></ul></li></ul>
         </div>
     </div>
