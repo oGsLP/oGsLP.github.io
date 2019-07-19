@@ -2,19 +2,24 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: 面试 - oGsLP</title>
+<title>npm package 学习（一） -- commander.js - oGsLP</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="oGsLP">
-<meta property="og:url" content="http://yoursite.com/tags/面试/index.html">
+    <meta name="description" content="&amp;emsp;commander.js 学习">
+<meta name="keywords" content="commander.js,cli">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm package 学习（一） -- commander.js">
+<meta property="og:url" content="http://yoursite.com/2019/07/19/commander-js/index.html">
 <meta property="og:site_name" content="oGsLP">
+<meta property="og:description" content="&amp;emsp;commander.js 学习">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-19T10:43:16.904Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="oGsLP">
+<meta name="twitter:title" content="npm package 学习（一） -- commander.js">
+<meta name="twitter:description" content="&amp;emsp;commander.js 学习">
 
 
 
@@ -88,7 +93,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="oGsLP" height="28">
+                <img src="/images/logo.svg" alt="npm package 学习（一） -- commander.js" height="28">
             
             </a>
         </div>
@@ -120,6 +125,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -134,33 +143,22 @@
         <div class="container" style="margin: 0 1.25%">
             <div class="columns">
                 <div class="column is-9-tablet is-9-desktop is-7-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">面试</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-03-23T10:44:50.000Z">2019-03-23</time>
+                <time class="level-item has-text-grey" datetime="2019-07-19T10:36:31.000Z">2019-07-19</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Interviews/">Interviews</a>
+                <a class="has-link-grey -link" href="/categories/前端/">前端</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/前端/npm-package/">npm package</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    10 分钟 读完 (大约 1456 个字)
+                    5 分钟 读完 (大约 779 个字)
                 </span>
                 
                 
@@ -169,23 +167,156 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2019/03/23/interview/">字节跳动暑期前端实习笔试 + 一面</a>
+                npm package 学习（一） -- commander.js
             
         </h1>
         <div class="content">
             <blockquote>
-<p>上周抱着试一试的心理去参加了班群里内推的字节跳动的暑期前端实习，笔试是在牛客网上做四道算法题，2个小时，前两题很简单做了30分钟就跑过了，后两道题难度有点大，我又是算法没怎么做过，所以光靠脑子还是有点招架不住。不知道是报的前端的原因还是后面两道的确难，也是拿到了面试资格，今天下午3点去试了一下，也是自己第一次求职面试。之前一直在赶大作业，所以就昨天晚上今天早上各两三个小时准备了一点，虽然面试题目其实不是很难但是还是倒了，而且是刚结束一分钟就收到短信说你凉了。。。分享一下，菜勿喷。</p>
+<p>&emsp;commander.js 学习</p>
 </blockquote>
+<a id="more"></a>
+<h1 id="commander-js"><a href="#commander-js" class="headerlink" title="commander.js"></a><strong>commander.js</strong></h1><ul>
+<li>当前版本<strong>2.20</strong></li>
+<li><a href="https://github.com/tj" target="_blank" rel="noopener">@tj</a></li>
+<li><a href="https://github.com/tj/commander.js" target="_blank" rel="noopener">github</a>,<br><a href="http://tj.github.io/commander.js" target="_blank" rel="noopener">文档</a></li>
+<li>用途：nodejs的cli tool编写框架</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> program = <span class="hljs-built_in">require</span>(<span class="hljs-string">'commander'</span>);</span><br><span class="line"></span><br><span class="line">program</span><br><span class="line">  .version(<span class="hljs-string">'0.1.0'</span>)</span><br><span class="line">  .option(<span class="hljs-string">'-C, --chdir &lt;path&gt;'</span>, <span class="hljs-string">'change the working directory'</span>)</span><br><span class="line">  .option(<span class="hljs-string">'-c, --config &lt;path&gt;'</span>, <span class="hljs-string">'set config path. defaults to ./deploy.conf'</span>)</span><br><span class="line">  .option(<span class="hljs-string">'-T, --no-tests'</span>, <span class="hljs-string">'ignore test hook'</span>);</span><br><span class="line"></span><br><span class="line">program</span><br><span class="line">  .command(<span class="hljs-string">'setup [env]'</span>)</span><br><span class="line">  .description(<span class="hljs-string">'run setup commands for all envs'</span>)</span><br><span class="line">  .option(<span class="hljs-string">"-s, --setup_mode [mode]"</span>, <span class="hljs-string">"Which setup mode to use"</span>)</span><br><span class="line">  .action(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">env, options</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> mode = options.setup_mode || <span class="hljs-string">"normal"</span>;</span><br><span class="line">    env = env || <span class="hljs-string">'all'</span>;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'setup for %s env(s) with %s mode'</span>, env, mode);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">program</span><br><span class="line">  .command(<span class="hljs-string">'exec &lt;cmd&gt;'</span>)</span><br><span class="line">  .alias(<span class="hljs-string">'ex'</span>)</span><br><span class="line">  .description(<span class="hljs-string">'execute the given remote cmd'</span>)</span><br><span class="line">  .option(<span class="hljs-string">"-e, --exec_mode &lt;mode&gt;"</span>, <span class="hljs-string">"Which exec mode to use"</span>)</span><br><span class="line">  .action(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">cmd, options</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'exec "%s" using %s mode'</span>, cmd, options.exec_mode);</span><br><span class="line">  &#125;).on(<span class="hljs-string">'--help'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">''</span>);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Examples:'</span>);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">''</span>);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'  $ deploy exec sequential'</span>);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'  $ deploy exec async'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">program</span><br><span class="line">  .command(<span class="hljs-string">'*'</span>)</span><br><span class="line">  .action(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">env</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'deploying "%s"'</span>, env);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">program.parse(process.argv);</span><br></pre></td></tr></table></figure>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol start="0">
+<li><code>#!/usr/bin/env node</code></li>
+<li><p>创建cli的program变量</p>
+<ul>
+<li>commader exports了一个全局对象，适用于快速开发。同样exports了对象，通过new一个实例作为局部变量，应用于复杂应用。</li>
+<li><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// global object</span></span><br><span class="line"><span class="hljs-keyword">const</span> program = <span class="hljs-built_in">require</span>(<span class="hljs-string">"commander"</span>);</span><br><span class="line">program.version(<span class="hljs-string">"0.0.1"</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// local object</span></span><br><span class="line"><span class="hljs-keyword">const</span> commander = <span class="hljs-built_in">require</span>(<span class="hljs-string">"commander"</span>);</span><br><span class="line">program = <span class="hljs-keyword">new</span> commander.Command();</span><br><span class="line">program.version(<span class="hljs-string">"0.0.1"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>配置program及option</p>
+</li>
+<li>配置program的命令及option</li>
+<li>parse<ul>
+<li>解析argv、设置的选项、激发的命令</li>
+<li>必要的<code>program.parse(process.argv);</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><blockquote>
+<p>return {Command} for chaining</p>
+</blockquote>
+<ol start="0">
+<li><p>Command对象源码</p>
+<pre><code><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Command</span>(<span class="hljs-params">name</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.commands = [];</span><br><span class="line">    <span class="hljs-keyword">this</span>.options = [];</span><br><span class="line">    <span class="hljs-keyword">this</span>._execs = &#123;&#125;;</span><br><span class="line">    <span class="hljs-keyword">this</span>._allowUnknownOption = <span class="hljs-literal">false</span>;</span><br><span class="line">    <span class="hljs-keyword">this</span>._args = [];</span><br><span class="line">    <span class="hljs-keyword">this</span>._name = name || <span class="hljs-string">''</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</code></pre></li>
+<li><p>command</p>
+<ul>
+<li>Command.prototype.command(name, desc, opts)<ul>
+<li>创建cli的命令</li>
+<li>当name通过ARGV被识别，剩余的参数用于访问函数，并且引发action回调函数</li>
+<li>当name是*时，会处理所有未匹配的命令，参数从第二个算起</li>
+</ul>
+</li>
+<li>name格式：’name <arg> [args…]’<ul>
+<li>可以且只有最后一个参数可以是可变参数，且要用…</li>
+<li>&lt;&gt;代表必需参数，[]为可选参数</li>
+</ul>
+</arg></li>
+<li>Command.prototype.arguments()<ul>
+<li>指定参数的格式</li>
+</ul>
+</li>
+<li>Command.prototype.parseExpectedArgs()<ul>
+<li>解析command name中的参数</li>
+</ul>
+</li>
+<li><p>Git-style sub-commands</p>
+  <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// file: ./examples/pm</span></span><br><span class="line"><span class="hljs-keyword">var</span> program = <span class="hljs-built_in">require</span>(<span class="hljs-string">'commander'</span>);</span><br><span class="line"></span><br><span class="line">program</span><br><span class="line">.version(<span class="hljs-string">'0.1.0'</span>)</span><br><span class="line">.command(<span class="hljs-string">'install [name]'</span>, <span class="hljs-string">'install one or more packages'</span>)</span><br><span class="line">.command(<span class="hljs-string">'search [query]'</span>, <span class="hljs-string">'search with optional query'</span>)</span><br><span class="line">.command(<span class="hljs-string">'list'</span>, <span class="hljs-string">'list packages installed'</span>, &#123;<span class="hljs-attr">isDefault</span>: <span class="hljs-literal">true</span>&#125;)</span><br><span class="line">.parse(process.argv);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>当command()的调用方法参数中含有descr时，action方法不该调用，而是交给入口文件的的目录的可执行文件执行(pm-install, pm-search)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>option</p>
+<ul>
+<li><p>Option对象源码</p>
+  <figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Option</span>(<span class="hljs-params">flags, description</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.flags = flags;</span><br><span class="line">    <span class="hljs-keyword">this</span>.required = ~flags.indexOf(<span class="hljs-string">'&lt;'</span>);</span><br><span class="line">    <span class="hljs-keyword">this</span>.optional = ~flags.indexOf(<span class="hljs-string">'['</span>);</span><br><span class="line">    <span class="hljs-keyword">this</span>.bool = !~flags.indexOf(<span class="hljs-string">'-no-'</span>);</span><br><span class="line">    flags = flags.split(<span class="hljs-regexp">/[ ,|]+/</span>);</span><br><span class="line">    <span class="hljs-keyword">if</span> (flags.length &gt; <span class="hljs-number">1</span> &amp;&amp; !<span class="hljs-regexp">/^[[&lt;]/</span>.test(flags[<span class="hljs-number">1</span>])) <span class="hljs-keyword">this</span>.short = flags.shift();</span><br><span class="line">    <span class="hljs-keyword">this</span>.long = flags.shift();</span><br><span class="line">    <span class="hljs-keyword">this</span>.description = description || <span class="hljs-string">''</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Command.prototype.option(flags, description, fn ,defaultValue)</p>
+<ul>
+<li>flags: ‘-f, –flag <required>/[opt]’</required></li>
+<li>no-前缀会让值默认为true, 而调用时会为false</li>
+<li><required> [opt]</required></li>
+</ul>
+</li>
+<li><em>@private</em> Option.prototype.attributeName()<ul>
+<li>选项的长名字的驼峰命名</li>
+</ul>
+</li>
+<li>Command.prototype.allowUnknownoption(arg)<ul>
+<li>允许未知的选项出现在命令行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>description/alias/version<ul>
+<li>设置description、alias、version</li>
+</ul>
+</li>
+<li>action<ul>
+<li>注册命令的回调处理函数</li>
+<li>[…cmd]</li>
+</ul>
+</li>
+<li>parse<ul>
+<li>Command.prototype.parse(argv)<ul>
+<li>解析argv</li>
+</ul>
+</li>
+<li>Command.prototype.parseOptions(argv)<ul>
+<li>返回argv的列表</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="其余api"><a href="#其余api" class="headerlink" title="其余api"></a>其余api</h2><ul>
+<li>Command.prototype.opts()<ul>
+<li>返回一个包含options的键值对的对象</li>
+</ul>
+</li>
+<li>Command.prototype.name(str|)<ul>
+<li>设置/获取command的名字</li>
+</ul>
+</li>
+<li>Command.prototype.usage(str|)<ul>
+<li>设置/获取命令的用法([command][options] …)</li>
+</ul>
+</li>
+<li>Command.prototype.outputHelp(callback)<ul>
+<li>打印命令的帮助信息</li>
+</ul>
+</li>
+<li>Command.prototype.help(callback)<ul>
+<li>打印帮助信息并退出</li>
+</ul>
+</li>
+<li>program.on(flag,func)<ul>
+<li>监听</li>
+</ul>
+</li>
+</ul>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/03/23/interview/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/cli/">cli</a>, <a class="has-link-grey -link" href="/tags/commander-js/">commander.js</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -193,9 +324,50 @@
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.png" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat_pay.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
 
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/19/semester-summary/">
+                <span class="level-item">6.19的随记</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 </div>
@@ -410,6 +582,37 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#commander-js">
+        <span class="has-mr-6">1</span>
+        <span>commander.js</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#示例">
+        <span class="has-mr-6">1.1</span>
+        <span>示例</span>
+        </a></li><li>
+        <a class="is-flex" href="#步骤">
+        <span class="has-mr-6">1.2</span>
+        <span>步骤</span>
+        </a></li><li>
+        <a class="is-flex" href="#组成">
+        <span class="has-mr-6">1.3</span>
+        <span>组成</span>
+        </a></li><li>
+        <a class="is-flex" href="#其余api">
+        <span class="has-mr-6">1.4</span>
+        <span>其余api</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 
@@ -1094,7 +1297,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="oGsLP" height="28">
+                    <img src="/images/logo.svg" alt="npm package 学习（一） -- commander.js" height="28">
                 
                 </a>
                 <p class="is-size-7">
