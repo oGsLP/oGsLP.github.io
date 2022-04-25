@@ -1,0 +1,77 @@
+# website
+title: Cloud Kingdom
+subtitle: ""
+description: It's easy to be drunk when it's hard to be sober.
+keywords: null
+author: oGsLP
+language: zh
+timezone: Asia/Shanghai
+# site url
+url: http://oGsLP.github.io
+permalink: ":year/:month-:day-:title/"
+permalink_defaults: null
+pretty_urls:
+  trailing_index: true
+  trailing_html: true
+# directories
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: ":lang"
+skip_render: null
+# articles
+new_post_name: ":title.md"
+default_layout: post
+titlecase: false
+external_link:
+  enable: true
+  field: site
+  exclude: ""
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace: ""
+  wrap: true
+  hljs: false
+prismjs:
+  enable: false
+  preprocess: true
+  line_number: true
+  tab_replace: ""
+index_generator:
+  path: ""
+  per_page: 10
+  order_by: "-date"
+# categories & tags
+default_category: uncategorized
+category_map: null
+tag_map: null
+# date & time
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+updated_option: mtime
+# page
+per_page: 10
+pagination_dir: page
+# (ex)include
+include: null
+exclude: null
+ignore: null
+# extensions
+theme: icarus
+deploy:
+  type: git
+  repo: https://github.com/oGsLP/oGsLP.github.io
+  branch: gh-pages
+meta_generator: true
+# else
+toc: true
